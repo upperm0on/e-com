@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+	<h1> {{ object.name }} </h1>
+
+	<!-- update -->
+	<a href="{% url 'products_update' object.id %}"> update </a>
+
+	<!-- delete -->
+	<a href="{% url 'products_delete' object.id %}"> delete </a>
+{% endblock content %}
