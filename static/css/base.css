@@ -1,0 +1,43 @@
+@import './config.css';
+
+body {
+	display: flex;
+	flex-direction: row;
+}
+
+nav {
+	height: 100vh;
+	width: 200px;
+	border: 1px solid black;
+	display: flex;
+}
+
+nav .list-inline {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	margin-top: 20px;
+	gap: 8px;
+}
+
+nav .list-inline .list-inline-item {
+	gap: 10px;
+}
+
+nav .list-inline .list-inline-item .nav-link {
+	font-family: var(--link-font);
+	font-weight: 400;
+	font-size: .9rem;
+	color: var(--link-color);
+	letter-spacing: -0.5px;
+}
+
+nav .list-inline .list-inline-item:hover .nav-link {
+	color: var(--link-hover);
+	font-weight: 500;
+}
+
+#content {
+	display: flex;
+	flex-direction: column;
+}

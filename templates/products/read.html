@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	<link rel="stylesheet" href="{% static 'css/products/read.css' %}">
+	<button type="button" class="add_product_btn"><a href="{% url 'products_create' %}">add new product </a></button>
+	<ul class="list-inline products">
+		{% for obj in object %}
+			<li class="list-inline-items shadow-sm">
+				<ul class="inner-list">
+					<li class="inner-list-items name">
+						<a href="{% url 'products_details' obj.id %}"> {{ obj }} </a>
+					</li>
+					<li class="inner-list-items price">
+						{{ obj.price }} USD
+					</li>
+					<li class="inner-list-items status">
+						{{ obj.status }}
+					</li>
+					<li class="inner-list-items">
+						<button type="button">
+							<a href="{% url 'products_update' obj.id %}"> edit </a>
+						</button>
+						<button type="button" class="btn1">
+							<a href="{% url 'products_delete' obj.id %}"> delete </a>
+						</button>
+					</li>
+				</ul>
+			</li>
+		{% endfor %}
+	</ul>
+{% endblock content%} 

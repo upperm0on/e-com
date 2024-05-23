@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+	<h1> {{ object.name }} </h1> <p>{{ object.category }}</p>
+	<strong>Object rating: {{ total_rate }} ( {{counted_stars}} ratings )</strong><br>
+
+	<!-- update -->
+	<a href="{% url 'products_update' object.id %}"> update </a>
+
+	<!-- delete -->
+	<a href="{% url 'products_delete' object.id %}"> delete </a>
+
+	<p>{{ object.details }}</p>
+	<p> {{ object.price }}</p>
+{% endblock content %}

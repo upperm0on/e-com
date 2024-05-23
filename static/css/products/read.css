@@ -1,0 +1,95 @@
+@import '../config.css';
+
+.add_product_btn {
+	background: var(--tertiary-color);
+	height: 40px;
+	border: none;	
+	border-radius: 5px;
+}
+
+.add_product_btn a {
+	text-decoration: none;
+	padding: 20px;
+	color: var(--secondary-color);
+	font-family: var(--primary-font);
+	font-size: .85rem;
+	text-transform: uppercase;
+	font-weight: 500;
+}
+
+.list-inline.products {
+	width: 80vw;
+}
+
+.list-inline .list-inline-items {
+	margin-top: 10px;
+	height: 50px;
+	width: 100%;
+	align-content: center;
+}
+
+.inner-list {
+	display: grid;
+	grid-template-columns: 2fr 1fr 1fr 1fr;
+	list-style: none;
+	width: 100%;
+}
+
+.inner-list-items button {
+	background: var(--link-color);
+	height: 30px;
+	border: none;	
+	border-radius: 5px;
+}
+
+.inner-list-items button a {
+	text-decoration: none;
+	padding: 20px;
+	color: var(--link-hover);
+	font-family: var(--primary-font);
+	font-size: .85rem;
+	text-transform: uppercase;
+	font-weight: 500;
+}
+
+.inner-list-items button.btn1 {
+	background: var(--danger-color2);
+	height: 30px;
+	border: none;	
+	border-radius: 5px;
+}
+
+.inner-list-items button.btn1 a {
+	text-decoration: none;
+	padding: 20px;
+	color: var(--danger-color);
+	font-family: var(--primary-font);
+	font-size: .85rem;
+	text-transform: uppercase;
+	font-weight: 500;
+}
+
+.inner-list-items.status {
+	font-family: var(--primary-font);
+	font-weight: 400;
+	font-size: .9rem;
+	text-transform: uppercase;
+	color: var(--link-color);
+	letter-spacing: -0.5px;
+}
+
+.inner-list-items.name a {
+	font-family: var(--primary-font);
+	font-weight: 500;
+	font-size: .9rem;
+	text-transform: uppercase;
+	color: var(--link-hover);
+	text-decoration: none;
+}
+
+.inner-list-items.price {
+	font-family: var(--primary-font);
+	font-weight: 400;
+	font-size: .9rem;
+	text-transform: uppercase;
+}
