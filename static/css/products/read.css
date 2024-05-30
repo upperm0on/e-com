@@ -30,7 +30,7 @@
 
 .inner-list {
 	display: grid;
-	grid-template-columns: 2fr 1fr 1fr 1fr;
+	grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
 	list-style: none;
 	width: 100%;
 }
@@ -82,8 +82,8 @@
 	font-family: var(--primary-font);
 	font-weight: 500;
 	font-size: .9rem;
-	text-transform: uppercase;
-	color: var(--link-hover);
+	text-transform: capitalize;
+	color: var(--secondary-color);
 	text-decoration: none;
 }
 
@@ -92,4 +92,9 @@
 	font-weight: 400;
 	font-size: .9rem;
 	text-transform: uppercase;
+}
+
+.inner-list-items.img img {
+	height: 40px;
+	width: 65px;	
 }

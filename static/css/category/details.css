@@ -1,0 +1,51 @@
+@import '../config.css';
+
+.cat-status {
+	padding: 20px ;
+	display: flex;
+	flex-direction: row;
+	gap: 2em;
+}
+
+.cat-status span {
+	font-size: 1rem;
+	text-transform: uppercase;
+	color: var(--secondary-color);
+	font-weight: 500;
+}
+
+.cat-status .edit_btns {
+	display: flex;
+	flex-direction: row;
+	gap: 1em;
+}
+
+.cat-status .edit_btns button {
+	border: none;
+	height: 40px;
+	border-radius: 8px;
+}
+
+.cat-status .edit_btns button a {
+	text-decoration: none;
+	padding: 10px 20px;
+	text-transform: uppercase;
+	font-weight: 500;
+	font-size: .85rem;
+}
+
+.cat-status .edit_btns button.update_btn {
+	background: var(--link-color);
+}
+
+.cat-status .edit_btns button.update_btn a{
+	color: var(--link-hover);
+}
+
+.cat-status .edit_btns button.delete_btn {
+	background: var(--danger-color);
+}
+
+.cat-status .edit_btns button.delete_btn a{
+	color: var(--danger-color2);
+}

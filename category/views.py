@@ -10,7 +10,6 @@ def create(request):
 	if request.method == "POST": 
 		if form.is_valid: 
 			form.save()
-			print(form.cleaned_data)
 			form = Category_form()
 	context = {
 		'form' : form, 

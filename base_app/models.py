@@ -12,6 +12,7 @@ class product(models.Model):
 	category 	= models.ForeignKey(category, on_delete=models.CASCADE)
 	date_added  = models.DateTimeField(null=True, auto_now_add=True)
 	details 	= models.TextField(null=True)
+	product_image = models.ImageField(null=True, upload_to="media/")
 
 	def __str__(self): 
 		return self.name 

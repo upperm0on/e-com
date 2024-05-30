@@ -1,9 +1,23 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %} 
-	<form method="POST" action=".">
+<link rel="stylesheet" type="text/css" href="{% static 'css/products/create.css' %}">
+	<form method="POST" action="." class="form shadow" enctype="multipart/form-data">
+		<p class="head">Add a new product</p>
 		{% csrf_token %}
-		{{ form.as_p }}
+		<div class="grouped-form">
+			<ul class="list-inline">
+				<li class="list-inline-item"> Name: <br>{{ form.name }}</li>
+				<li class="list-inline-item"> Price: <br>{{ form.price }}</li>
+				<li class="list-inline-item"> Quantity: <br>{{ form.quantity }}</li>
+			</ul>
+			<ul class="list-inline">
+				<li class="list-inline-item"> Status: <br>{{ form.status }}</li>
+				<li class="list-inline-item"> Category: <br>{{ form.category }}</li>
+				<li class="list-inline-item"> Picture: <br>{{ form.product_image }}</li>
+			</ul>
+		</div>
+		Details : {{ form.details }}
 		<button type="submit">Submit</button>
 	</form>
 {% endblock content %}

@@ -1,20 +1,59 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %} 
+<link rel="stylesheet" href="{% static 'css/products/read.css' %}">
+<link rel="stylesheet" href="{% static 'css/category/details.css' %}">
 
-<h1> {{ cat_obj.name }}</h1>
-<a href="{% url 'category_update' cat_obj.id %}"> update </a>
 
-<!-- delete -->
-<a href="{% url 'category_delete' cat_obj.id %}"> delete </a>
+<div class="cat-status shadow-sm">
+	<span> {{ cat_obj.name }}</span> | 
+
+	<div class="edit_btns">
+		<button type="button" class="update_btn">
+			<a href="{% url 'category_update' cat_obj.id %}"> update </a>
+		</button>
+		<button type="button" class="delete_btn">
+			<a href="{% url 'category_delete' cat_obj.id %}"> delete </a>
+		</button>
+	</div>
+
+</div>
 	{% if object %}
-		<ul>
-			{% for obj in object %}
-				<li>
-					<!-- details -->
-					<a href="{% url 'products_details' obj.id %}"> {{ obj.name }} </a>
-				</li>
-			{% endfor %}
-		</ul>
+	<ul class="list-inline products">
+		{% for obj in object %}
+			<li class="list-inline-items shadow-sm">
+				<ul class="inner-list">
+					{% if obj.product_image %}
+					<li class="inner-list-items img">
+						<img src="{{ obj.product_image.url }}" alt="image here">
+					</li>
+					{% else %}
+					<li class="inner-list-items img">
+						<img src="" alt="image here">
+					</li>
+					{% endif %}
+					<li class="inner-list-items name">
+						<a href="{% url 'products_details' obj.id %}"> {{ obj }} </a>
+					</li>
+					<li class="inner-list-items price">
+						{{ obj.price }} USD
+					</li>
+					<li class="inner-list-items status">
+						{{ obj.status }}
+					</li>
+					<li class="inner-list-items">
+						<button type="button">
+							<a href="{% url 'products_update' obj.id %}"> edit </a>
+						</button>
+						<button type="button" class="btn1">
+							<a href="{% url 'products_delete' obj.id %}"> delete </a>
+						</button>
+					</li>
+				</ul>
+			</li>
+		{% endfor %}
+	</ul>
+
 	{% endif %}
 {% endblock content %}
+

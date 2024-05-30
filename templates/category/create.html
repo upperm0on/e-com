@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %} 
-	<form method="POST" action=".">
+<link rel="stylesheet" type="text/css" href="{% static 'css/category/create.css' %}">
+	<form method="POST" action="." class="form shadow">
+		<p class="head">Create A new category</p>
 		{% csrf_token %}
 		{{ form.as_p }}
 		<button type="submit">Submit</button>

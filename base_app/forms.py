@@ -7,9 +7,10 @@ class Product_form(forms.ModelForm):
 		model = product 
 		fields = [
 			'name',
-			'details',
 			'price',
 			'quantity',
 			'status',
-			'category'
+			'category',
+			'product_image',
+			'details',
 		]

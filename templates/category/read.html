@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
-	<ul>
+	<link rel="stylesheet" href="{% static 'css/category/read.css' %}" >
+	<button type="button" class="add_category_btn"><a href="{% url 'category_create' %}">add new category </a></button>
+	<ul class="category_list_inline">
 		{% for obj in object %}
-			<li><a href="{% url 'category_details' obj.id %}"> {{ obj }} </a></li>
+			<li class="category_list_inline_item"><a href="{% url 'category_details' obj.id %}"> {{ obj }} </a></li>
 		{% endfor %}
 	</ul>
 {% endblock content%}

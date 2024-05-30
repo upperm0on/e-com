@@ -1,0 +1,107 @@
+@import '../config.css';
+
+.super-mega-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.super-container {
+	display: flex;
+	flex-direction: row;
+	width: 70vw;
+}
+
+.super-container .image-section {
+	width: 60%;
+	position: relative;
+	object-fit: contain;
+	border-radius: 15px;
+	overflow: hidden;
+}
+
+.super-container .image-section img {
+	height: 350px;
+	width: 100%;
+}
+
+.super-container .small-details {
+	padding: 30px;
+}
+
+.super-container .small-details .list-inline {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+}
+
+.super-container .small-details .list-inline .list-inline-items.name {
+	font-family: var(--primary-font);
+	text-transform: capitalize;
+	font-size: 1.5rem;
+	font-weight: 400;
+	letter-spacing: -1px;
+}
+
+.super-container .small-details .list-inline .list-inline-items.category {
+	font-family: var(--link-font);
+	text-transform: uppercase;
+	font-size: 1.25rem;
+	font-weight: 500;
+	color: var(--link-color);
+}
+
+.super-container .small-details .list-inline .list-inline-items.price {
+	font-family: var(--primary-font);
+	font-size: 1rem;
+	font-weight: 400;
+}	
+
+button.update_btn {
+	background: var(--link-color);
+	height: 30px;
+	border: none;	
+	border-radius: 5px;
+}
+
+button.update_btn a {
+	text-decoration: none;
+	padding: 20px;
+	color: var(--link-hover);
+	font-family: var(--primary-font);
+	font-size: .85rem;
+	text-transform: uppercase;
+	font-weight: 500;
+}
+
+button.delete_btn {
+	background: var(--danger-color2);
+	height: 30px;
+	border: none;	
+	border-radius: 5px;
+}
+
+button.delete_btn a {
+	text-decoration: none;
+	padding: 20px;
+	color: var(--danger-color);
+	font-family: var(--primary-font);
+	font-size: .85rem;
+	text-transform: uppercase;
+	font-weight: 500;
+}
+
+.details-container {
+	padding: 30px;
+}
+
+.details-container h1 {
+	font-weight: 400;
+	font-family: var(--primary-font);
+	font-size: 1.35rem;
+	text-transform: uppercase;
+}
+
+.details-container p {
+	font-family: var(--primary-font);
+	color: var(--link-color);
+}

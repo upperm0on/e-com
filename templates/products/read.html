@@ -7,6 +7,15 @@
 		{% for obj in object %}
 			<li class="list-inline-items shadow-sm">
 				<ul class="inner-list">
+					{% if obj.product_image %}
+					<li class="inner-list-items img">
+						<img src="{{ obj.product_image.url }}" alt="image here">
+					</li>
+					{% else %}
+					<li class="inner-list-items img">
+						<img src="" alt="image here">
+					</li>
+					{% endif %}
 					<li class="inner-list-items name">
 						<a href="{% url 'products_details' obj.id %}"> {{ obj }} </a>
 					</li>

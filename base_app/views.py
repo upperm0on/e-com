@@ -18,11 +18,11 @@ def first_view(request):
 	return render(request, 'index.html', context)
 
 def create(request): 
-	form = Product_form(request.POST or None) 
+	form = Product_form 
 	if request.method == "POST": 
+		form = Product_form(request.POST or None, request.FILES)
 		if form.is_valid: 
-			form.save()
-			print(form.cleaned_data)
+			form.save(commit=True)
 			form = Product_form()
 	context = {
 		'form' : form, 

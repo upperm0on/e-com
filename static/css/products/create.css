@@ -1,0 +1,107 @@
+@import '../config.css';
+
+.form {
+	display: flex;
+	flex-direction: column;
+	border-radius: 15px;
+	padding: 20px 50px;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 800px;
+}
+
+.form .head {
+	font-size: 1.25rem;
+	font-family: var(--link-font);
+	text-transform: uppercase;
+	font-weight: 600;
+	color: var(--link-hover);
+	margin: 0 auto;
+	position: relative;
+}
+
+.form .head::before {
+	content: '';
+	background: var(--link-color);
+	height: 2px;
+	width: 40%;
+	position: absolute;
+	top: 120%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+
+.form input {
+	font-family: var(--primary-font);
+	font-size: 1rem;
+	height: 40px;
+	width: 300px;
+	padding: 15px;
+	border: none;
+	border-bottom: 2px solid var(--primary-color);
+}
+
+.form textarea {
+	font-family: var(--primary-font);
+	font-size: .85em;
+	min-height: 150px;
+	max-height: 150px;
+	max-width: 800px;
+	padding: 5px;
+	border: 2px solid var(--primary-color);
+	border-radius: 5px;
+}
+
+
+.form input:focus, 
+.form select:focus,
+.form textarea:focus {
+	outline: none;
+}
+
+.form select {
+	height: 40px;
+	width: 300px;
+	padding: 10px;
+	font-family: var(--primary-font);
+	border: none;
+	border-bottom: 2px solid var(--primary-color);
+}
+
+.form button {
+	padding: 8px 20px;
+	border: none;
+	border-radius: 5px;
+	font-size: .9rem;
+	font-family: var(--primary-font);
+	font-weight: 500;
+	background: transparent;
+	color: var(--secondary-color);
+	border: 2px solid var(--primary-color);
+	transition: 200ms ease-in;
+	margin: 5px auto;
+}
+
+.form button:hover {
+	background: var(--primary-color);
+	color: var(--secondary-color);
+	border: 2px solid var(--primary-color);
+	transition: 200ms ease-in;
+}
+
+.grouped-form {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.grouped-form .list-inline {
+	margin: 20px;
+	list-style: none;
+}
+
+.grouped-form .list-inline .list-inline-item {
+	display: block;
+}
