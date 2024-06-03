@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 
 from .models import product
 from .forms import Product_form
+from review.models import review
 
 from ratings.models import (
 	five_star,
@@ -39,6 +40,15 @@ def read(request):
 def details(request, id): 
 	obj = product.objects.get(id=id)
 	stars_list = [one_star, two_star, three_star, four_star, five_star]
+	reviews = review.objects.filter(product=obj).all().order_by("-date_added")
+
+	if request.method == "POST": 
+		model_no = int(request.POST['star-selection']) 
+		stars_list[model_no - 1].objects.create(product=obj)
+
+		comment = request.POST['review_text']
+
+		review.objects.create(product=obj, comment=comment)
 
 	total_star = 0 
 	count2 = 0
@@ -60,6 +70,7 @@ def details(request, id):
 		'object' : obj, 
 		'total_rate': round(total_rate, 1),
 		'counted_stars': count2,
+		'reviews' : reviews,
 	}
 	return render(request, "products/details.html", context)
 

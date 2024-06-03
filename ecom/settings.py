@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'base_app',
     'category',
     'ratings',
+    'review',
 ]
 
 MIDDLEWARE = [
