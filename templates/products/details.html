@@ -39,17 +39,49 @@
 		<p>{{ object.details }}</p>
 	</div>
 	<div class="rating-section">
-		<form method="POST" action=".">
+		<form method="POST" action="." class="rating-and-review">
+			<h4>Drop a Review </h4>
 			{% csrf_token %}
-			<input type="radio" name="star-selection" value="1" required>
-			<input type="radio" name="star-selection" value="2" required>
-			<input type="radio" name="star-selection" value="3" required>
-			<input type="radio" name="star-selection" value="4" required>
-			<input type="radio" name="star-selection" value="5" required>
+			<div class="radio-section">
+				<input type="radio" name="star-selection" value="1" required id="radio1">
+				<input type="radio" name="star-selection" value="2" required id="radio2">
+				<input type="radio" name="star-selection" value="3" required id="radio3">
+				<input type="radio" name="star-selection" value="4" required id="radio4">
+				<input type="radio" name="star-selection" value="5" required id="radio5">
+			</div>
+			<div class="labels"> 
+				<ul class="list-inline">
+					<li class="list-inline-item">
+						<label for="radio1">
+							<i class="fa-regular fa-star" ></i>
+						</label>
+					</li>
+					<li class="list-inline-item">
+						<label for="radio2">
+							<i class="fa-regular fa-star"></i>
+						</label>
+					</li>
+					<li class="list-inline-item">
+						<label for="radio3">
+							<i class="fa-regular fa-star"></i>
+						</label>
+					</li>
+					<li class="list-inline-item">
+						<label for="radio4">
+							<i class="fa-regular fa-star"></i>
+						</label>
+					</li>
+					<li class="list-inline-item">
+						<label for="radio5">
+							<i class="fa-regular fa-star"></i>
+						</label>
+					</li>
+			</div>
+
 
 			<div class="comment-section">
 				<span>What do you think of this Product</span>
-				<textarea name="review_text"></textarea>
+				<textarea name="review_text" required></textarea>
 			</div>
 			<button class="submit">Submit Review</button>
 
@@ -59,10 +91,10 @@
 		<p> Reviews </p>
 		<ul>
 		{% for review in reviews %}
-			<li> {{ review.comment }} </li>
+				<li> {{ review.comment }} </li>
 		{% endfor %}
 		</ul>
 	</div>
 </div>
-<i class="fa fa-user"></i>
+<script src="{% static 'js/details.js' %}"></script>
 {% endblock content %}

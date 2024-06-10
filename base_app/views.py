@@ -76,8 +76,9 @@ def details(request, id):
 
 def update(request, id): 
 	obj = product.objects.get(id=id) 
-	form = Product_form(request.POST or None, instance=obj)
-	if request.method == "POST": 
+	form = Product_form(instance=obj)
+	if request.method == "POST":
+		form = Product_form(request.POST, request.FILES, instance=obj) 
 		if form.is_valid(): 
 			form.save()
 			return redirect('/products/read/')

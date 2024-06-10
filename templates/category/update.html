@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %} 
 <link rel="stylesheet" type="text/css" href="{% static 'css/category/create.css' %}">
-	<form method="POST" action="." class="form shadow">
+	<form method="POST" action="." class="form shadow" enctype="multipart/form-data">
 		<p class="head">change category info</p>
 		{% csrf_token %}
 		{{ form.as_p }}
