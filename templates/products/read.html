@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 	<link rel="stylesheet" href="{% static 'css/products/read.css' %}">
-	<button type="button" class="add_product_btn"><a href="{% url 'products_create' %}">add new product </a></button>
+	<button type="button" class="add_product_btn"><a href="{% url 'products_create' %}"> <i class="fa-solid fa-cubes"></i> add new product </a></button>
 	<ul class="list-inline products">
 		{% for obj in object %}
 			<li class="list-inline-items shadow-sm">
@@ -25,13 +25,17 @@
 					<li class="inner-list-items status">
 						{{ obj.status }}
 					</li>
-					<li class="inner-list-items">
-						<button type="button">
-							<a href="{% url 'products_update' obj.id %}"> edit </a>
-						</button>
-						<button type="button" class="btn1">
-							<a href="{% url 'products_delete' obj.id %}"> delete </a>
-						</button>
+					<li class="inner-list-items button">
+					<button type="button" class="update_btn">
+						<a href="{% url 'products_update' obj.id %}">
+							<i class="fa-regular fa-pen-to-square"></i>
+						 EDIT </a>
+					</button>
+					<button type="button" class="delete_btn">
+						<a href="{% url 'products_delete' obj.id %}">
+							<i class="fa-solid fa-trash"></i>
+						 delete </a>
+					</button>	
 					</li>
 				</ul>
 			</li>

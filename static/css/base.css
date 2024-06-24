@@ -3,21 +3,20 @@
 body {
 	display: flex;
 	flex-direction: row;
-	background: #d5d5d5;
 }
 
 nav {
 	height: 100vh;
 	width: 200px;
-	border: 1px solid black;
 	display: flex;
+	background: var(--tertiary-color);
 }
 
 nav .list-inline {
 	display: flex;
 	flex-direction: column;
 	margin: 0 auto;
-	margin-top: 20px;
+	margin-top: 50px;
 	gap: 8px;
 }
 
@@ -27,16 +26,24 @@ nav .list-inline .list-inline-item {
 
 nav .list-inline .list-inline-item .nav-link {
 	font-family: var(--link-font);
-	font-weight: 400;
+	font-weight: 500;
 	font-size: .9rem;
-	color: var(--link-color);
+	color: var(--link-hover);
 	letter-spacing: -0.5px;
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	padding: 8px 15px;
+}
+
+nav .list-inline .list-inline-item:hover {
+	background: var(--secondary-color);
+	border-radius: 5px;
 }
 
 nav .list-inline .list-inline-item:hover .nav-link {
-	color: var(--link-hover);
-	font-weight: 500;
+	color: white;
 }
+
 
 #content {
 	display: flex;

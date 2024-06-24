@@ -35,14 +35,14 @@
 	width: 100%;
 }
 
-.inner-list-items button {
+button.update_btn {
 	background: var(--link-color);
 	height: 30px;
 	border: none;	
 	border-radius: 5px;
 }
 
-.inner-list-items button a {
+button.update_btn a {
 	text-decoration: none;
 	padding: 20px;
 	color: var(--link-hover);
@@ -52,16 +52,16 @@
 	font-weight: 500;
 }
 
-.inner-list-items button.btn1 {
+button.delete_btn {
 	background: var(--danger-color2);
 	height: 30px;
 	border: none;	
 	border-radius: 5px;
 }
 
-.inner-list-items button.btn1 a {
+button.delete_btn a {
 	text-decoration: none;
-	padding: 20px;
+	padding: 10px;
 	color: var(--danger-color);
 	font-family: var(--primary-font);
 	font-size: .85rem;
@@ -92,6 +92,12 @@
 	font-weight: 400;
 	font-size: .9rem;
 	text-transform: uppercase;
+}
+
+.inner-list-items.button {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 5px;
 }
 
 .inner-list-items.img img {

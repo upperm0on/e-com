@@ -25,17 +25,21 @@
 		 			<span> Quantity Available : </span>{{ object.quantity }}
 		 		<li class="list-inline-items">
 					<button type="button" class="update_btn">
-						<a href="{% url 'products_update' object.id %}"> EDIT </a>
+						<a href="{% url 'products_update' object.id %}">
+							<i class="fa-regular fa-pen-to-square"></i>
+						 EDIT </a>
 					</button>
 					<button type="button" class="delete_btn">
-						<a href="{% url 'products_delete' object.id %}"> delete </a>
+						<a href="{% url 'products_delete' object.id %}">
+							<i class="fa-solid fa-trash"></i>
+						 delete </a>
 					</button>		
 		 		</li>
 		 	</ul>
 		</div>
 	</div>
 	<div class="details-container">
-		<h1>Product Description</h1>
+		<h4>Product Description</h4>
 		<p>{{ object.details }}</p>
 	</div>
 	<div class="rating-section">
