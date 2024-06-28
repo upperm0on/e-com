@@ -112,6 +112,7 @@ button.delete_btn a {
 
 .rating-and-review .labels .list-inline .list-inline-item label:hover {
 	cursor: pointer;
+	transition: 200ms ease;
 }
 
 .comment-section {

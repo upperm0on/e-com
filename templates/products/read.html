@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 	<link rel="stylesheet" href="{% static 'css/products/read.css' %}">
-	<button type="button" class="add_product_btn"><a href="{% url 'products_create' %}"> <i class="fa-solid fa-cubes"></i> add new product </a></button>
+	<button type="button" class="add_product_btn"><a href="{% url 'products_create' %}"> <i class="fa-solid fa-plus"></i> add new product </a></button>
 	<ul class="list-inline products">
 		{% for obj in object %}
 			<li class="list-inline-items shadow-sm">

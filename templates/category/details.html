@@ -10,10 +10,14 @@
 
 	<div class="edit_btns">
 		<button type="button" class="update_btn">
-			<a href="{% url 'category_update' cat_obj.id %}"> update </a>
+			<a href="{% url 'category_update' cat_obj.id %}"> 
+				<i class="fa-regular fa-pen-to-square"></i>
+			update </a>
 		</button>
 		<button type="button" class="delete_btn">
-			<a href="{% url 'category_delete' cat_obj.id %}"> delete </a>
+			<a href="{% url 'category_delete' cat_obj.id %}"> 
+				<i class="fa-solid fa-trash"></i>
+			delete </a>
 		</button>
 	</div>
 
@@ -42,12 +46,16 @@
 						{{ obj.status }}
 					</li>
 					<li class="inner-list-items">
-						<button type="button">
-							<a href="{% url 'products_update' obj.id %}"> edit </a>
-						</button>
-						<button type="button" class="btn1">
-							<a href="{% url 'products_delete' obj.id %}"> delete </a>
-						</button>
+						<button type="button" class="update_btn">
+						<a href="{% url 'products_update' obj.id %}">
+							<i class="fa-regular fa-pen-to-square"></i>
+						 EDIT </a>
+					</button>
+					<button type="button" class="delete_btn">
+						<a href="{% url 'products_delete' obj.id %}">
+							<i class="fa-solid fa-trash"></i>
+						 delete </a>
+					</button>	
 					</li>
 				</ul>
 			</li>
