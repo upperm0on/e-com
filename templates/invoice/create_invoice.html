@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/invoice/create_invoice.css' %}">
-<form method="POST" id="invoice-form">
+<form method="POST" id="invoice-form" class="this_form">
     {% csrf_token %}
     <h3>Invoice</h3>
 
@@ -24,12 +24,13 @@
                 <!-- Display each item in objects_list -->
                 {% for item_id in objects_list %}
                 <tr class="item-row">
-                    <td>{{ item_id.name }}</td>
-                    <td>{{ item_id.price }}</td>
+                    <td class="product_name">{{ item_id.name }}</td>
+                    <td class="product_price">{{ item_id.price }}</td>
                     <td><input type="number" min="0" value="{{ item_id.quantity }}" class="quantity-input" data-price="{{ item_id.price }}"></td>
                     <td class="total-cell">{{ item_id.price|floatformat:2 }}</td> <!-- Initial total -->
                 </tr>
                 {% endfor %}
+                <input type="hidden" name="hidden_datas" value="" class="hidden_data" name="hidden_data">
             </tbody>
             <tfoot>
                 <tr>
@@ -45,23 +46,17 @@
     <!-- Search Box and Display -->
     <div class="dim-background"></div>
     <div class="search-box" style="display: none">
-        <form method="POST" action=".">
-            {% csrf_token %}
             <input type="text" name="item_search" class="item_search">
             <button type="submit" name="item_search_btn" class="submitBtn">Search</button>
-        </form>
 
         <!-- Display Search Results -->
         <div class="search-items-display">
             <ul>
                 {% for obj in object %}
                 <li>
-                    <form method="POST">
-                        {% csrf_token %}
                         <span>{{ obj.name }}</span>
                         <input type="hidden" name="hidden_value" value="{{ obj.id }}">
                         <button type="submit" name="add_item">Add Item</button>
-                    </form>
                 </li>
                 {% endfor %}
             </ul>
@@ -72,7 +67,7 @@
     </div>
 
     <!-- Submit Button for the Entire Form -->
-    <button type="submit">Submit</button>
+    <button type="submit" name="entire_submit" id="entire_submit">Submit</button>
 </form>
 
 <script src="{% static 'js/create_invoice.js' %}"></script>

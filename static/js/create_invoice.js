@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
             var csrf = document.createElement('input');
             csrf.type = 'hidden';
             csrf.name = 'csrfmiddlewaretoken';
-            csrf.value = '{{ csrf_token }}';
+            csrf.value = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
 
             var clearButton = document.createElement('input');
             clearButton.type = 'hidden';
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var quantityInputs = document.querySelectorAll('.quantity-input');
     quantityInputs.forEach(function(input) {
         input.addEventListener('input', updateTotals);
-        input.addEventListener('blur', restrictQuantity);
+        input.addEventListener('mouseup', restrictQuantity);
     });
 
     // Function to restrict quantity to initial value on blur
@@ -103,4 +103,30 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Initial call to update totals on page load
     updateTotals();
+
+    var entire_submit = document.querySelector('#entire_submit');
+    entire_submit.addEventListener('mousedown', (e)=>{
+        e.preventDefault();
+        let product_quantity = document.querySelectorAll('.quantity-input');
+        let product_price = document.querySelectorAll('.product_price');
+        let product_name = document.querySelectorAll('.product_name');
+        let hidden_data = document.querySelector('.hidden_data');
+
+        var new_dict = {};
+
+        for (var x = 0; x < product_quantity.length; x++) {
+            var priceKey = product_price[x].innerHTML;
+            new_dict[product_name[x].innerHTML] = {
+                'Quantity': product_quantity[x].value,
+                'Price': priceKey
+            };
+        }
+
+        // Converting JSON data to string
+        var data = JSON.stringify(new_dict);
+        hidden_data.value = data;
+        console.log(hidden_data)
+        form = document.querySelector('.this_form');
+        form.submit();
+    })
 });

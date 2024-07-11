@@ -1,16 +1,41 @@
 from django.shortcuts import render, redirect
-from .forms import ViewInvoiceForms
+from .models import Invoice
 from base_app.models import product
+import json
 
 def create_invoice(request):
     # Initialize form, obj (search results), and transformed_objects (to display in template)
-    form = ViewInvoiceForms()
     obj = None
     transformed_objects = []
 
     # Handle form submission (POST request)
     if request.method == "POST":
-        form = ViewInvoiceForms(request.POST)
+        hidden_datas_str = request.POST.get('hidden_datas', '')
+
+        # Check if hidden_datas_str is not empty
+        if hidden_datas_str:
+            try:
+                # Parse 'hidden_datas' JSON string into a Python dictionary
+                hidden_datas_dict = json.loads(hidden_datas_str)
+                products = product.objects.all()
+                for prod in products:
+                    stringed_name = str(prod)
+                    try:
+                        product_quantity = int(hidden_datas_dict[stringed_name]["Quantity"])
+                        product_retrieved = product.objects.get(name=stringed_name)
+                        product_retrieved.quantity -= product_quantity
+                        product_retrieved.save()
+                    except KeyError:
+                        # Handle KeyError if 'Quantity' key doesn't exist
+                        pass
+            except :
+                pass
+
+                # Clear all items in 'objects_list' session variable
+                request.session['objects_list'] = []
+
+                # Redirect to dashboard after processing all products
+                return redirect('/dashboard/')
 
         # Handle item search form submission
         if 'item_search_btn' in request.POST:
@@ -47,8 +72,7 @@ def create_invoice(request):
     transformed_objects = product.objects.filter(id__in=objects_list)
 
     # Prepare context to pass to the template
-    context = {
-        'invoice_form': form,        # Form for searching and adding items
+    context = {    # Form for searching and adding items
         'object': obj,               # Search results (filtered products)
         'objects_list': transformed_objects,  # Products to display in the invoice
     }
