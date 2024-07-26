@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Load the Google Charts library -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <!-- Link to the external JavaScript file -->
+    <script src="{% static 'js/dashboard_chart.js' %}"></script>
+
+    <a href="{% url 'create_invoice' %}">Create Invoice</a>
+    <a href="{% url 'read_invoice' %">Read Invoice</a>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <label for="year">Select Year:</label>
+        <select name="year" id="year">
+            {% for year in years %}
+                <option value="{{ year }}" {% if year == selected_year %}selected{% endif %}>{{ year }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+    
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+
+    <!-- Include JSON data in a script tag with type="application/json" -->
+    <script type="application/json" id="revenue-data">
+        {{ revenue|safe }}
+    </script>
+{% endblock content %}

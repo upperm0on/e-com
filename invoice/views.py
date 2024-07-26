@@ -20,10 +20,16 @@ def create_invoice(request):
                 products = product.objects.all()
                 for prod in products:
                     stringed_name = str(prod)
+                    invoice_items = Invoice.objects.all()
+                    invoice_items.create(items=hidden_datas_dict)
+                    invoice_items.save()
                     try:
                         product_quantity = int(hidden_datas_dict[stringed_name]["Quantity"])
                         product_retrieved = product.objects.get(name=stringed_name)
+                        initial_quantity = product_retrieved.quantity
                         product_retrieved.quantity -= product_quantity
+                        if product_retrieved.quantity < 0: 
+                            product_retrieved.quantity = 0
                         product_retrieved.save()
                     except KeyError:
                         # Handle KeyError if 'Quantity' key doesn't exist
@@ -32,10 +38,10 @@ def create_invoice(request):
                 pass
 
                 # Clear all items in 'objects_list' session variable
-                request.session['objects_list'] = []
+            request.session['objects_list'] = []
 
                 # Redirect to dashboard after processing all products
-                return redirect('/dashboard/')
+            return redirect('/dashboard/')
 
         # Handle item search form submission
         if 'item_search_btn' in request.POST:
@@ -79,3 +85,19 @@ def create_invoice(request):
 
     # Render the template with the context
     return render(request, 'invoice/create_invoice.html', context)
+
+def read_invoice(request):
+    objects = Invoice.objects.all().order_by("-date_created"); 
+    context = {
+        'objects': objects,
+    }
+    return render(request, 'invoice/read_invoice.html', context)
+
+def details_invoice(request, id): 
+    id = id
+    objects = Invoice.objects.get(id=id)
+    object_items = objects.items
+    context = {
+        'data': object_items,
+    }
+    return render(request, 'invoice/details_invoice.html', context)

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	This is the content of the read_invoice
+	<ul>
+	{% for obj in objects %}
+		<a href="{% url 'details_invoice' obj.id %}"><li>{{ obj }}</li></a>
+	{% endfor %}
+	</ul>
+{% endblock content%}
