@@ -30,6 +30,44 @@
 
 .submitBtn {
     margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    transform: scale(.9);
+    font-family: var(--link-font);
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: .85rem;
+    color: var(--link-hover);
+    background: var(--tertiary-color);
 }
 
+.addBtn {
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    transform: scale(.9);
+    font-family: var(--link-font);
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: .85rem;
+    color: var(--link-hover);
+    background: var(--link-color);
+}
+
+.interior {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    padding: 5px;
+    margin: 5pxs;
+    border-bottom: 1px solid var(--tertiary-color);
+    transition: 200ms ease;
+}
+
+.interior:hover {
+    transform: scale(1.05);
+    transition: 200ms ease;
+}
 

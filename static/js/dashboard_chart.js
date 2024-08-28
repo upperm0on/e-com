@@ -62,3 +62,38 @@ function drawChart() {
         document.getElementById('chart_div').innerHTML = '<p>Chart could not be rendered. Please try again later.</p>';
     }
 }
+
+ google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var dataElement = document.getElementById('category-revenue-data');
+    var data = JSON.parse(dataElement.textContent);
+    // Prepare data in the format Google Charts expects
+
+    var data = google.visualization.arrayToDataTable([['Category', 'Revenue']];
+    data.forEach(function(item) {
+        if (item && item.category && item.value !== undefined) {
+            chartData.push([item.category, item.value]);
+        } else {
+            console.warn('Invalid data item:', item);
+        }
+    });
+
+    var data = google.visualization.arrayToDataTable([
+      ['Category', 'Revenue'],
+      ['Work',     11],
+      ['Eat',      2],
+      ['Commute',  2],
+      ['Watch TV', 2],
+      ['Sleep',    7]
+    ]);
+
+    var options = {
+      title: 'My Daily Activities'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+    chart.draw(data, options);
+  }

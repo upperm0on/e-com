@@ -8,8 +8,8 @@
 
     <!-- Selected Items Display -->
     <div class="selected-items">
-        <button type="button" onclick="clearItems()">Clear Items</button>
-        <button type="button" id="show_dialogue">Add Item</button>
+        <button type="button" onclick="clearItems()" class="btn btn-outline-danger">Clear Items</button>
+        <button type="button" id="show_dialogue" class="btn btn-secondary">Add Item</button>
         <table class="table items">
             <!-- Headers for Selected Items -->
             <thead>
@@ -24,7 +24,7 @@
                 <!-- Display each item in objects_list -->
                 {% for item_id in objects_list %}
                 <tr class="item-row">
-                    <td class="product_name">{{ item_id.name }}</td>
+                    <td class="product_name">{{ item_id.name }}</td>  
                     <td class="product_price">{{ item_id.price }}</td>
                     <td><input type="number" min="0" value="{{ item_id.quantity }}" class="quantity-input" data-price="{{ item_id.price }}"></td>
                     <td class="total-cell">{{ item_id.price|floatformat:2 }}</td> <!-- Initial total -->
@@ -45,29 +45,29 @@
 
     <!-- Search Box and Display -->
     <div class="dim-background"></div>
-    <div class="search-box" style="display: none">
-            <input type="text" name="item_search" class="item_search">
+    <div class="search-box" style="display: none; border: none; border-radius: 5px">
+            <input type="text" name="item_search" class="item_search" style="width: 80%; height: 40px; padding: 10px; font-weight: 600; border-radius: 15px; border-bottom: 1px solid black;">
             <button type="submit" name="item_search_btn" class="submitBtn">Search</button>
 
         <!-- Display Search Results -->
         <div class="search-items-display">
-            <ul>
+            <ul class="list-inline" style="display: flex; flex-direction: column;">
                 {% for obj in object %}
-                <li>
+                <li class="interior list-inline-item" style="margin: 0 auto;">
                         <span>{{ obj.name }}</span>
                         <input type="hidden" name="hidden_value" value="{{ obj.id }}">
-                        <button type="submit" name="add_item">Add Item</button>
+                        <button type="submit" name="add_item" class="addBtn">Add Item</button>
                 </li>
                 {% endfor %}
             </ul>
         </div>
 
         <!-- Done Button to close the search dialogue -->
-        <button type="button" id="done_button">Done</button>
+        <button type="button" id="done_button" class="btn btn-primary mb-3">Done</button>
     </div>
 
     <!-- Submit Button for the Entire Form -->
-    <button type="submit" name="entire_submit" id="entire_submit">Submit</button>
+    <button type="submit" name="entire_submit" id="entire_submit" class="btn btn-primary">SUBMIT</button>
 </form>
 
 <script src="{% static 'js/create_invoice.js' %}"></script>

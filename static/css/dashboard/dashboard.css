@@ -1,0 +1,33 @@
+@import '../config.css';
+
+.create_btn {
+	border: none;
+	border-radius: 5px;
+	padding: 5px;
+	transform: scale(.9);
+}
+
+.create_btn a {
+	text-decoration: none;
+	font-family: var(--link-font);
+	text-transform: uppercase;
+	font-weight: 600;
+	font-size: .85rem;
+	color: var(--link-hover);
+}
+
+.read_btn {
+	border: none;
+	border-radius: 5px;
+	padding: 5px;
+	transform: scale(.9);
+}
+
+.read_btn a {
+	text-decoration: none;
+	font-family: var(--link-font);
+	text-transform: uppercase;
+	font-weight: 600;
+	font-size: .85rem;
+	color: var(--link-hover);
+}

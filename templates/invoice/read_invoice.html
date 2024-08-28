@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-	This is the content of the read_invoice
-	<ul>
+	<link rel="stylesheet" href="{% static 'css/invoice/read_invoice.css' %}">
+	<ul style="list-style: circle; width: 500px;">
 	{% for obj in objects %}
-		<a href="{% url 'details_invoice' obj.id %}"><li>{{ obj }}</li></a>
+		<a href="{% url 'details_invoice' obj.id %}" style="text-decoration: none;" class="nav-link list-nav"><li style="padding: 15px;" class="shadow-sm">{{ obj }}</li></a>
 	{% endfor %}
 	</ul>
 {% endblock content%}

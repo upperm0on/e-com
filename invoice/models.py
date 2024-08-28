@@ -15,4 +15,4 @@ class Invoice(models.Model):
         return self.date_created.strftime(f'%A, %B {day}{suffix}, %Y, %I:%M %p')
 
     def __str__(self):
-        return f"Invoice Created on {self.formatted_date()}"
+        return f"Invoice created on {self.formatted_date()}"

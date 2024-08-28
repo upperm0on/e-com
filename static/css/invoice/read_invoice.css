@@ -1,0 +1,15 @@
+@import './config.css';
+
+.nav-link.list-nav {
+	transition: 200ms ease;
+	border-bottom: 2px solid var(--tertiary-color);
+	margin-bottom: 10px;
+}
+
+.nav-link.list-nav:hover {
+	transition: 200ms ease;
+	transform: scale(1.1);
+	background: var(--tertiary-color);
+	list-style: octal;
+}
+

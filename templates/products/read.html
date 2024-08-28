@@ -2,7 +2,6 @@
 {% load static %}
 {% block content %}
 	<link rel="stylesheet" href="{% static 'css/products/read.css' %}">
-	<button type="button" class="add_product_btn"><a href="{% url 'products_create' %}"> <i class="fa-solid fa-plus"></i> add new product </a></button>
 	<ul class="list-inline products">
 		{% for obj in object %}
 			<li class="list-inline-items shadow-sm">
@@ -42,3 +41,6 @@
 		{% endfor %}
 	</ul>
 {% endblock content%} 
+{% block section_btns%}
+	<button type="button" class="add_product_btn" style="transform: scale(.9);"><a href="{% url 'products_create' %}"> <i class="fa-solid fa-plus"></i> add new product </a></button>
+{% endblock section_btns%}

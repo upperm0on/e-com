@@ -14,7 +14,7 @@
         <tbody>
             {% for item_name, item_details in data.items %}
             <tr class="item-row">
-                <td class="product_name">{{ item_name }}</td>
+                <td class="product_name">{{ item_details.Name }}</td>
                 <td class="product_price">{{ item_details.Price }}</td>
                 <td class="product_quantity">{{ item_details.Quantity }}</td>
                 <td class="total-cell"></td> <!-- Initial total -->

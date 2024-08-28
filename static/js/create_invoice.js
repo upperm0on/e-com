@@ -116,7 +116,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         for (var x = 0; x < product_quantity.length; x++) {
             var priceKey = product_price[x].innerHTML;
-            new_dict[product_name[x].innerHTML] = {
+            new_dict['Product' + x] = {
+                'Name': product_name[x].innerHTML,
                 'Quantity': product_quantity[x].value,
                 'Price': priceKey
             };

@@ -8,24 +8,37 @@
     <!-- Link to the external JavaScript file -->
     <script src="{% static 'js/dashboard_chart.js' %}"></script>
 
-    <a href="{% url 'create_invoice' %}">Create Invoice</a>
-    <a href="{% url 'read_invoice' %">Read Invoice</a>
-    
+
+    <link rel="stylesheet" href="{% static 'css/dashboard/dashboard.css' %}">
+
     <form method="POST">
         {% csrf_token %}
         <label for="year">Select Year:</label>
         <select name="year" id="year">
             {% for year in years %}
-                <option value="{{ year }}" {% if year == selected_year %}selected{% endif %}>{{ year }}</option>
+                <option value="{{ year }}" {% if year == selected_year %} selected {% endif %}>{{ year }}</option>
             {% endfor %}
         </select>
-        <button type="submit">Submit</button>
+        <button type="submit" class="create_btn" style="font-weight: 500">SUBMIT</button>
     </form>
     
-    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+    <!-- Container for the monthly revenue chart -->
+    <div id="chart_div" style="width: 50%; height: 400px;"></div>
+    
+    <!-- Container for the category revenue pie chart -->
+    <div id="piechart" style="width: 50%; height: 500px;"></div>
 
     <!-- Include JSON data in a script tag with type="application/json" -->
     <script type="application/json" id="revenue-data">
         {{ revenue|safe }}
     </script>
+    
+    <script type="application/json" id="category-revenue-data">
+        {{ category_revenue|safe }}
+    </script>
+
 {% endblock content %}
+{% block section_btns %}
+    <button type="button" class="create_btn m-2"><a href="{% url 'create_invoice' %}">Create Invoice</a>
+   	<button type="button" class="read_btn"><a href="{% url 'read_invoice' %}">Read Invoice</a></button>
+{% endblock section_btns %}

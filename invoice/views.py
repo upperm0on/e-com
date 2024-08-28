@@ -17,23 +17,15 @@ def create_invoice(request):
             try:
                 # Parse 'hidden_datas' JSON string into a Python dictionary
                 hidden_datas_dict = json.loads(hidden_datas_str)
-                products = product.objects.all()
-                for prod in products:
-                    stringed_name = str(prod)
-                    invoice_items = Invoice.objects.all()
-                    invoice_items.create(items=hidden_datas_dict)
-                    invoice_items.save()
-                    try:
-                        product_quantity = int(hidden_datas_dict[stringed_name]["Quantity"])
-                        product_retrieved = product.objects.get(name=stringed_name)
-                        initial_quantity = product_retrieved.quantity
-                        product_retrieved.quantity -= product_quantity
-                        if product_retrieved.quantity < 0: 
-                            product_retrieved.quantity = 0
-                        product_retrieved.save()
-                    except KeyError:
-                        # Handle KeyError if 'Quantity' key doesn't exist
-                        pass
+                invoice_items = Invoice.objects.all()
+                for obj, key_item in hidden_datas_dict.items():
+                    product_quantity = int(key_item["Quantity"])
+                    product_name = key_item["Name"]
+                    retrieved_product = product.objects.get(name=product_name)
+                    retrieved_product.quantity -= product_quantity
+                    retrieved_product.save()
+
+                invoice_items.create(items=hidden_datas_dict)
             except :
                 pass
 
